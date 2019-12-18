@@ -1,3 +1,4 @@
+const BinarySearchTree = require('./BinarySearchTree');
 /*
 
 3, 5,    6, 8, 11,12,    14, 15, 17, 18
@@ -18,8 +19,8 @@ index 7 contained 15, and index 8 contained 17. There is no possibility of 16 ex
 
 */
 function binarySearch(array, value, start, end) {
-    var start = start === undefined ? 0 : start;
-    var end = end === undefined ? array.length : end;
+     start = start === undefined ? 0 : start;
+     end = end === undefined ? array.length : end;
 
     if (start > end) {
         return -1;
@@ -27,9 +28,7 @@ function binarySearch(array, value, start, end) {
 
     const index = Math.floor((start + end) / 2);
     const item = array[index];
-
-    console.log(start, end);
-    if (item == value) {
+    if (item === value) {
         return index;
     }
     else if (item < value) {
@@ -44,18 +43,16 @@ function binarySearch(array, value, start, end) {
 
 function findABook(number, title){
 
-    let found = false
+    let found = false;
     
-    let deweyDecimalArray = [100 , 200, 300, 400, 500, 600, 700, 800, 900]
-    let bookTitleArray = ['Argentina', 'Brazil', 'Chile', 'Columbia']
+    let deweyDecimalArray = [100 , 200, 300, 400, 500, 600, 700, 800, 900];
+    let bookTitleArray = ['Argentina', 'Brazil', 'Chile', 'Columbia'];
     
-    let deweyIndex = binarySearch(deweyDecimalArray, number)
-    let titleIndex = binarySearch(bookTitleArray, title)
+    let deweyIndex = binarySearch(deweyDecimalArray, number);
+    let titleIndex = binarySearch(bookTitleArray, title);
 
-    console.log(titleIndex)
     if(deweyIndex && titleIndex){
         found = true;
-        console.log(found)
     }
 
     if(found){
@@ -66,4 +63,16 @@ function findABook(number, title){
 
 }
 
-console.log(findABook('900', 'Chile'))
+console.log(findABook('900', 'Chile'));
+
+//.4 Searching in a BST
+// pre-order   :    (parent, left child, right child)
+// in-order    :    (left child, parent, right child)
+// post-order  :    (left child, right child, parent)
+//
+//1) Given a binary search tree whose in-order and pre-order traversals are respectively 14 15 19 25 27 35 79 89 90 91
+// and 35 25 15 14 19 27 89 79 91 90. What would be its post-order traversal?
+//  ** post-order :
+//
+// 2) The post order traversal of a binary search tree is 5 7 6 9 11 10 8. What is its pre-order traversal?
+//
