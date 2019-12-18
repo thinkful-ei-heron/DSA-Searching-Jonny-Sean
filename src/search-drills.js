@@ -75,37 +75,126 @@ function findABook(number, title){
 //
 //1) Given a binary search tree whose in-order and pre-order traversals are respectively 14 15 19 25 27 35 79 89 90 91
 // and 35 25 15 14 19 27 89 79 91 90. What would be its post-order traversal?
-//  ** post-order :
+//  ** post-order : [ 14, 15, 19, 25, 27, 79, 89, 90, 91, 35 ]
 //
 // 2) The post order traversal of a binary search tree is 5 7 6 9 11 10 8. What is its pre-order traversal?
-//
-
-let bst = new BinarySearchTree();
-
-bst.insert(25)
-bst.insert(15)
-bst.insert(50)
-bst.insert(10)
-bst.insert(24)
-bst.insert(35)
-bst.insert(70)
-bst.insert(4)
-bst.insert(12)
-bst.insert(18)
-bst.insert(31)
-bst.insert(44)
-bst.insert(66)
-bst.insert(90)
-bst.insert(22)
-
-//console.log(bst.preOrder())
-
-//console.log(bst.inOrder())
-
-//console.log(bst.postOrder())
-
-/*
+// ** pre-order : [ 8, 5, 6, 7, 9, 10, 11 ]
 
 
-*/
 
+function main4(){
+    let tomato = new BinarySearchTree();
+    tomato.insert(35,35);
+    tomato.insert(25,25);
+    tomato.insert(79,79);
+    tomato.insert(27,27);
+    tomato.insert(15,15);
+    tomato.insert(14,14);
+    tomato.insert(19,19);
+    tomato.insert(89,89);
+    tomato.insert(91,91);
+    tomato.insert(90,90);
+    console.log('Pre-order: ',tomato.dfsPre());
+    console.log('In-order: ',tomato.dfs());
+    console.log('Post-order: ',tomato.dfsPost());
+
+
+    let potato = new BinarySearchTree();
+    potato.insert(8,8);
+
+    potato.insert(6,6);
+    potato.insert(9,9);
+    potato.insert(7,7);
+    potato.insert(5,5);
+    potato.insert(11,11);
+    potato.insert(10,10);
+    console.log('Pre-order: ',potato.dfsPre());
+    console.log('In-order: ',potato.dfs());
+    console.log('Post-order: ',potato.dfsPost());
+}
+//main4();
+
+
+//.6 Find the Next Commanding Officer
+function bfs(tree, values = []) {
+    const queue = new Queue(); // Assuming a Queue is implemented (refer to previous lesson on Queue)
+    const node = tree;
+    queue.enqueue(node);
+    while (queue.length) {
+        const node = queue.dequeue(); //remove from the queue
+        values.push(node.value); // add that value from the queue to an array
+
+        if (node.left) {
+            queue.enqueue(node.left); //add left child to the queue
+        }
+
+        if (node.right) {
+            queue.enqueue(node.right); // add right child to the queue
+        }
+    }
+
+    return values;
+}
+// [ 'Captain Picard',
+//   'Commander Riker',
+//   'Commander Data',
+//   'Lt. Cmdr.  Worf ',
+//   'Lt. Cmdr. LaForge ',
+//   'Lt. Cmdr. Crusher',
+//   'Lieutenant security-officer',
+//   'Lieutenant Selar' ]
+function main6(){
+    let starshipUSSEnterprise = new BinarySearchTree();
+    starshipUSSEnterprise.insert(10,'Captain Picard');
+    starshipUSSEnterprise.insert(7,'Commander Riker');
+    starshipUSSEnterprise.insert(11,'Commander Data');
+    starshipUSSEnterprise.insert(12,'Lt. Cmdr. Crusher');
+    starshipUSSEnterprise.insert(13,'Lieutenant Selar');
+    starshipUSSEnterprise.insert(8,'Lt. Cmdr. LaForge ');
+    starshipUSSEnterprise.insert(6,'Lt. Cmdr.  Worf ');
+    starshipUSSEnterprise.insert(5,'Lieutenant security-officer');
+    console.log('Ranking Order: ',bfs(starshipUSSEnterprise));
+}
+//main6();
+
+
+//.7 Max Profit
+function maxProfit(tree, values=[1000,0]){
+    if(tree) {
+        if(values[0] >= tree.value){
+            values[0] = (tree.value);
+        } else if(values[1] <= tree.value)
+            values[1] = (tree.value);
+
+        if (tree.left) {
+            maxProfit(tree.left, values);
+        }
+        if (tree.right) {
+            maxProfit(tree.right, values);
+        }
+    }
+    return values[1] - values[0];
+}
+//                  128
+//                /
+//               97
+//                 \
+//                  121
+//                 /   \
+//                98   123
+//               /  \
+//              97  105
+
+function main7(){
+    let profits = new BinarySearchTree();
+    profits.insert(128,128);
+    profits.insert(97,97);
+    profits.insert(121,121);
+    profits.insert(123,123);
+    profits.insert(98,98);
+    profits.insert(97,97);
+    profits.insert(105,105);
+
+    console.log(maxProfit(profits));
+}
+main7();

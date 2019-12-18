@@ -124,5 +124,36 @@ class BinarySearchTree {
         }
         return this.left._findMin();
     }
+    dfs(values=[]) {
+        if (this.left) {
+            values = this.left.dfs(values);
+        }
+        values.push(this.value);
+
+        if (this.right) {
+            values = this.right.dfs(values);
+        }
+        return values;
+    }
+    dfsPre(values=[]) {
+        values.push(this.value);
+        if (this.left) {
+            values = this.left.dfs(values);
+        }
+        if (this.right) {
+            values = this.right.dfs(values);
+        }
+        return values;
+    }
+    dfsPost(values=[]) {
+        if (this.left) {
+            values = this.left.dfs(values);
+        }
+        if (this.right) {
+            values = this.right.dfs(values);
+        }
+        values.push(this.value);
+        return values;
+    }
 }
 module.exports = BinarySearchTree;
