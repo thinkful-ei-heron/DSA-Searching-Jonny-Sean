@@ -28,6 +28,8 @@ function binarySearch(array, value, start, end) {
 
     const index = Math.floor((start + end) / 2);
     const item = array[index];
+
+
     if (item === value) {
         return index;
     }
@@ -38,7 +40,6 @@ function binarySearch(array, value, start, end) {
         return binarySearch(array, value, start, index - 1);
     }
 };
-
 
 
 function findABook(number, title){
@@ -61,9 +62,11 @@ function findABook(number, title){
         return(`${title} was not found`)
     }
 
+    console.log()
 }
 
-console.log(findABook('900', 'Chile'));
+
+//console.log(findABook('900', 'Chile'));
 
 //.4 Searching in a BST
 // pre-order   :    (parent, left child, right child)
@@ -76,3 +79,33 @@ console.log(findABook('900', 'Chile'));
 //
 // 2) The post order traversal of a binary search tree is 5 7 6 9 11 10 8. What is its pre-order traversal?
 //
+
+let bst = new BinarySearchTree();
+
+bst.insert(25)
+bst.insert(15)
+bst.insert(50)
+bst.insert(10)
+bst.insert(24)
+bst.insert(35)
+bst.insert(70)
+bst.insert(4)
+bst.insert(12)
+bst.insert(18)
+bst.insert(31)
+bst.insert(44)
+bst.insert(66)
+bst.insert(90)
+bst.insert(22)
+
+//console.log(bst.preOrder())
+
+//console.log(bst.inOrder())
+
+//console.log(bst.postOrder())
+
+/*
+
+
+*/
+

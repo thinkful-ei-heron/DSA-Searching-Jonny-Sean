@@ -38,6 +38,37 @@ class BinarySearchTree {
         }
     }
 
+    preOrder(){
+        console.log(this.key)
+        if(this.left){
+            this.left.preOrder()
+        }
+        if(this.right){
+            this.right.preOrder()
+        }
+    }
+
+    inOrder(){
+        if(this.left){
+            this.left.inOrder()
+        }
+        console.log(this.key)
+        if(this.right){
+            this.right.inOrder()
+        }
+    }
+
+    postOrder(){
+        if(this.left){
+            this.left.postOrder()
+        }
+        if(this.right){
+            this.right.postOrder()
+        }
+        console.log(this.key)
+    }
+
+
     remove(key) {
         if (this.key === key) {
             if (this.left && this.right) {
