@@ -159,6 +159,16 @@ function main6(){
 
 
 //.7 Max Profit
+//                  128
+//                /
+//               97
+//                 \
+//                  121
+//                 /   \
+//                98   123
+//               /  \
+//              97  105
+
 function maxProfit(tree, values=[1000,0]){
     if(tree) {
         if(values[0] >= tree.value){
@@ -175,15 +185,6 @@ function maxProfit(tree, values=[1000,0]){
     }
     return values[1] - values[0];
 }
-//                  128
-//                /
-//               97
-//                 \
-//                  121
-//                 /   \
-//                98   123
-//               /  \
-//              97  105
 
 function main7(){
     let profits = new BinarySearchTree();
@@ -198,3 +199,6 @@ function main7(){
     console.log(maxProfit(profits));
 }
 main7();
+
+
+
