@@ -169,7 +169,7 @@ function main6(){
 //               /  \
 //              97  105
 
-function maxProfit(tree, values=[1000,0]){
+function maxProfit(tree, values=[Infinity,-Infinity]){
     if(tree) {
         if(values[0] >= tree.value){
             values[0] = (tree.value);
